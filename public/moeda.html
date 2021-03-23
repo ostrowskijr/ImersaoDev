@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt_br">
+  <head>
+    <title>Imersão Dev - Conversor de Moédas</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url('dolar.jpg');
+            background-repeat: unset;
+        }
+    </style>
+</head>
+  <body>
+    <h1 id="titulo1" class="text-center">Conversor de Moédas.</h1>
+    <hr>
+    <div class="container">
+        <div class="form-group">
+            <label for="vl_real">Cotação Dolar</label>
+            <input type="text"
+              class="form-control" name="" id="vl_cotacao" aria-describedby="helpId" placeholder="Cotação Dolar">
+          </div>
+          <div class="form-group">
+            <label for="vl_real">Valor do Real (R$)</label>
+            <input type="text"
+              class="form-control" name="" id="vl_real" aria-describedby="helpId" placeholder="Valor do Real">
+          </div>
+          <input name="" id="btn_conversao" class="btn btn-primary" type="button" value="Converter Moéda">
+          <div class="form-group">
+            <label for="vl_dolar">Valor Conertido Dolar (U$)</label>
+            <input type="text"
+              class="form-control" name="" id="vl_dolar" aria-describedby="helpId" placeholder="Valor do Dolar" disabled>
+          </div>
+    </div>    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        const btnConversao = $("#btn_conversao");
+        //
+        btnConversao.click( () => {
+            var vl_dolar = $("#vl_dolar");
+            var vl_real = $("#vl_real").val();
+            var vl_cotacao = $("#vl_cotacao").val();
+            if (vl_cotacao === null || vl_cotacao === undefined || vl_cotacao === "") {
+                alert("Valor da cotação do dolar é obrigatório!")
+                return;
+            } else if (vl_real === null || vl_real === undefined || vl_real === "") {
+                alert("Valor em Reais é obrigatório!")
+                return;
+            } else if (vl_real === NaN) {
+                alert("Não foi informado um valor válida para Real!")
+                return;
+            }  else if (vl_cotacao === NaN) {
+                alert("Não foi informado um valor válida para Cotação!")
+                return;
+            }
+            //
+            var vl_conversao = (vl_real * vl_cotacao);
+            vl_conversao = vl_conversao.toFixed(2);
+            vl_dolar.val(vl_conversao);            
+        });
+    </script>  
+  </body>
+</html>
